@@ -1,10 +1,10 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = v0-1-g78ca95a
-MAKEFILE_DATE = 01-05-2017 19:11
-AUTHOR ?= Alejandro Gallo
-URL ?= https://github.com/alejandrogallo/clang-makefile
-LICENSE ?= GPLv3
+MAKEFILE_VERSION = v0-3-g9faff02
+MAKEFILE_DATE = 02-05-2017 00:50
+MAKEFILE_AUTHOR = Alejandro Gallo
+MAKEFILE_URL = https://github.com/alejandrogallo/clang-makefile
+MAKEFILE_LICENSE = GPLv3
 
 
 
@@ -268,6 +268,28 @@ $(foreach EXT,$(C_EXTENSIONS),$(eval $(call c_obj_compile_rule,$(EXT))))
 
 
 
+# File: fortran.m4
+
+
+
+
+FC_EXTENSIONS ?= F90 f90 F95 f95 F03 f03 F f
+define fc_obj_compile_rule
+%.o: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,$$(FC)) $$(@)
+	$$(DBG_FLAG)$$(FC) $$(FCFLAGS) -c $$< -o $$*.o
+endef
+define fc_dep_compile_rule
+%.d: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,DEP) $$(@)
+	$$(DBG_FLAG)$$(FC) $$(FCFLAGS) -M -MF $$@ $$<
+endef
+$(foreach EXT,$(FC_EXTENSIONS),$(eval $(call fc_dep_compile_rule,$(EXT))))
+$(foreach EXT,$(FC_EXTENSIONS),$(eval $(call fc_obj_compile_rule,$(EXT))))
+
+
+
+
 # File: tags.m4
 
 
@@ -389,8 +411,8 @@ help: ## Prints help for targets with comments
 		$(MAKEFILE_LIST)
 	@echo ""
 	@echo "  $(MAKEFILE_VERSION)"
-	@echo "  $(URL)"
-	@echo "  Copyright $(AUTHOR) $(LICENSE) $(MAKEFILE_DATE)"
+	@echo "  $(MAKEFILE_URL)"
+	@echo "  Copyright $(MAKEFILE_AUTHOR) $(MAKEFILE_LICENSE) $(MAKEFILE_DATE)"
 	@echo ""
 
 

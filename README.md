@@ -7,9 +7,6 @@
     omitted and a `see` is put in its place.  If there is no default value then
     the keyword `empty` appears.
     
-  * `AUTHOR`(`Alejandro Gallo`): 
-  * `URL`(`https://github.com/alejandrogallo/clang-makefile`): 
-  * `LICENSE`(`GPLv3`): 
   * `VERSION`(`\"0.0.0\"`): 
   * `BINDIR`(`bin`): 
   * `SRCDIR`(`src`): 
@@ -56,6 +53,7 @@
   * `ECHO`(`@echo`): 
   * `CXX_EXTENSIONS`(`cpp C cc cxx CC`): 
   * `C_EXTENSIONS`(`c`): 
+  * `FC_EXTENSIONS`(`F90 f90 F95 f95 F03 f03 F f`): 
   * `MAKEFILE_UPDATE_URL`(`https://raw.githubusercontent.com/alejandrogallo/clang-makefile/master/dist/Makefile`): 
   * `RM_FLAGS`(`-rf`): Remove command flags
   * `DEFAULT_CLEAN_FILES`(`empty`): Default clean file to be cleaned
