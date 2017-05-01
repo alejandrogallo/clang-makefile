@@ -1,7 +1,7 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = v0-4-g9d6446d
-MAKEFILE_DATE = 02-05-2017 00:54
+MAKEFILE_VERSION = v0-5-g07d7f44
+MAKEFILE_DATE = 02-05-2017 01:06
 MAKEFILE_AUTHOR = Alejandro Gallo
 MAKEFILE_URL = https://github.com/alejandrogallo/clang-makefile
 MAKEFILE_LICENSE = GPLv3
@@ -108,10 +108,12 @@ UNIQ ?= uniq
 MAKE ?= $(or $(MAKE),make)
 # `rm` command
 RM ?= rm
-# For creating tags
+# C++ compiler
 CXX ?= g++
-# For creating tags
+# C compiler
 CC ?= gcc
+# Fortran compiler
+FC ?= gfortran
 
 
 
