@@ -1,6 +1,6 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 19:03
+MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 19:07
 AUTHOR ?= Alejandro Gallo
 URL ?= https://github.com/alejandrogallo/clang-makefile
 LICENSE ?= GPLv3
@@ -21,6 +21,8 @@ VERSION ?= \"0.0.0\"
 BINDIR ?= bin
 SRCDIR ?= src
 EXECUTABLE ?= $(BINDIR)/main
+EXEC_COMPILER ?= $(CXX)
+EXEC_FLAGS ?= $(CXXFLAGS)
 
 CLEAN_FILES ?= \
 $(wildcard $(OBJFILES)) \
@@ -45,6 +47,12 @@ all: $(EXECUTABLE)
 
 objs: $(OBJFILES) ## Make object files
 deps: $(DEPFILES) ## Make dependencies
+
+$(EXECUTABLE): $(OBJFILES)
+	$(ECHO) $(call print-cmd-name,$(EXEC_COMPILER)) $(@)
+	$(DBG_FLAG)mkdir -p $(BINDIR)
+	$(DBG_FLAG)$(EXEC_COMPILER) $(OBJFILES) -o $@ $(EXEC_FLAGS) $(LD_FLAGS)
+
 
 # File: common-makefile/src/os.m4
 # Recognise OS

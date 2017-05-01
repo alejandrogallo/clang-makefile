@@ -14,6 +14,8 @@
   * `BINDIR`(`bin`): 
   * `SRCDIR`(`src`): 
   * `EXECUTABLE`(`see`): 
+  * `EXEC_COMPILER`(`see`): 
+  * `EXEC_FLAGS`(`see`): 
   * `CLEAN_FILES`(`\`): 
   * `SH`(`bash`): Shell used
   * `SHELL`(`see`): Alias for `SHELL'
