@@ -1,6 +1,6 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 18:33
+MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 19:01
 AUTHOR ?= Alejandro Gallo
 URL ?= https://github.com/alejandrogallo/clang-makefile
 LICENSE ?= GPLv3
@@ -16,6 +16,35 @@ LICENSE ?= GPLv3
 
 # Local configuration
 -include config.mk
+
+VERSION ?= \"0.0.0\"
+BINDIR ?= bin
+SRCDIR ?= src
+EXECUTABLE ?= $(BINDIR)/main
+
+CLEAN_FILES ?= \
+$(wildcard $(OBJFILES)) \
+$(wildcard $(DEPFILES)) \
+$(wildcard $(EXECUTABLE)) \
+$(wildcard $(BINDIR)) \
+
+SOURCES = $(CFILES) $(CXXFILES)
+
+OBJFILES = \
+$(shell echo $(SOURCES) | sed "s/\.\S*/.o/g") \
+
+DEPFILES = \
+$(shell echo $(SOURCES) | sed "s/\.\S*/.d/g") \
+
+ifneq ($(MAKECMDGOALS), clean)
+-include $(DEPFILES)
+endif
+
+.DEFAULT_GOAL := $(EXECUTABLE)
+all: $(EXECUTABLE)
+
+objs: $(OBJFILES) ## Make object files
+deps: $(DEPFILES) ## Make dependencies
 
 # File: common-makefile/src/os.m4
 # Recognise OS
@@ -70,6 +99,10 @@ UNIQ ?= uniq
 MAKE ?= $(or $(MAKE),make)
 # `rm` command
 RM ?= rm
+# For creating tags
+CXX ?= g++
+# For creating tags
+CC ?= gcc
 
 
 
@@ -182,6 +215,51 @@ endif #QQUIET
 
 
 
+# File: cxx.m4
+
+
+
+
+CXX_EXTENSIONS ?= cpp C cc cxx CC
+define cxx_obj_compile_rule
+%.o: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,$$(CXX)) $$(@)
+	$$(DBG_FLAG)$$(CXX) $$(CXXFLAGS) -c $$< -o $$*.o
+endef
+define cxx_dep_compile_rule
+%.d: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,DEP) $$(@)
+	$$(DBG_FLAG)$$(CXX) $$(CXXFLAGS) -M -MF $$@ $$<
+endef
+$(foreach EXT,$(CXX_EXTENSIONS),$(eval $(call cxx_dep_compile_rule,$(EXT))))
+$(foreach EXT,$(CXX_EXTENSIONS),$(eval $(call cxx_obj_compile_rule,$(EXT))))
+
+
+
+
+# File: c.m4
+
+
+
+
+C_EXTENSIONS ?= c
+define c_obj_compile_rule
+%.o: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,$$(CC)) $$(@)
+	$$(DBG_FLAG)$$(CC) $$(CFLAGS) -c $$< -o $$*.o
+endef
+define c_dep_compile_rule
+%.d: %.$(1)
+	$$(ECHO) $$(call print-cmd-name,DEP) $$(@)
+	$$(DBG_FLAG)$$(CC) $$(CFLAGS) -M -MF $$@ $$<
+endef
+$(foreach EXT,$(C_EXTENSIONS),$(eval $(call c_dep_compile_rule,$(EXT))))
+$(foreach EXT,$(C_EXTENSIONS),$(eval $(call c_obj_compile_rule,$(EXT))))
+
+
+
+
+
 # File: common-makefile/src/update.m4
 
 
@@ -199,7 +277,6 @@ MAKEFILE_UPDATE_URL ?= https://raw.githubusercontent.com/alejandrogallo/clang-ma
 update: ## Update the makefile from the repository
 	$(ARROW) "Getting makefile from $(MAKEFILE_UPDATE_URL)"
 	$(DBG_FLAG)wget $(MAKEFILE_UPDATE_URL) -O Makefile
-
 
 
 
@@ -275,7 +352,6 @@ help-%:
 		| sed -n "1,/===/ {/===/n; s/^# //p}" \
 		| tac \
 		| sed -n "p; 1s/./=/gp; 1a\ "
-
 
 
 

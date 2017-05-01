@@ -10,6 +10,11 @@
   * `AUTHOR`(`Alejandro Gallo`): 
   * `URL`(`https://github.com/alejandrogallo/clang-makefile`): 
   * `LICENSE`(`GPLv3`): 
+  * `VERSION`(`\"0.0.0\"`): 
+  * `BINDIR`(`bin`): 
+  * `SRCDIR`(`src`): 
+  * `EXECUTABLE`(`see`): 
+  * `CLEAN_FILES`(`\`): 
   * `SH`(`bash`): Shell used
   * `SHELL`(`see`): Alias for `SHELL'
   * `PY`(`python`): Python interpreter
@@ -29,6 +34,8 @@
   * `UNIQ`(`uniq`): `uniq` program to use
   * `MAKE`(`see`): `Makefile` binary
   * `RM`(`rm`): `rm` command
+  * `CXX`(`g++`): For creating tags
+  * `CC`(`gcc`): For creating tags
   * `QUIET`(`0`): If secondary programs output is shown
   * `QQUIET`(`empty`): If the log messages should be also muted
   * `DEBUG`(`empty`): If the commands issued should be printed write `DEBUG=1` if you want to see all commands.
@@ -45,6 +52,8 @@
   * `ARROW`(`@echo "see`): 
   * `ARROW`(`@echo "===>"`): 
   * `ECHO`(`@echo`): 
+  * `CXX_EXTENSIONS`(`cpp C cc cxx CC`): 
+  * `C_EXTENSIONS`(`c`): 
   * `MAKEFILE_UPDATE_URL`(`https://raw.githubusercontent.com/alejandrogallo/clang-makefile/master/dist/Makefile`): 
 
 
