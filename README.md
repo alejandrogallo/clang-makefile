@@ -14,6 +14,7 @@
   * `EXEC_COMPILER`(`see`): 
   * `EXEC_FLAGS`(`see`): 
   * `CLEAN_FILES`(`\`): 
+  * `SOURCES`(`see`): 
   * `SH`(`bash`): Shell used
   * `SHELL`(`see`): Alias for `SHELL'
   * `PY`(`python`): Python interpreter

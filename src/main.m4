@@ -25,7 +25,7 @@ $(wildcard $(DEPFILES)) \
 $(wildcard $(EXECUTABLE)) \
 $(wildcard $(BINDIR)) \
 
-SOURCES = $(CFILES) $(CXXFILES)
+SOURCES ?= $(CFILES) $(CXXFILES) $(FCFILES)
 
 OBJFILES = \
 $(shell echo $(SOURCES) | sed "s/\.\S*/.o/g") \

@@ -1,7 +1,7 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = v0-3-g9faff02
-MAKEFILE_DATE = 02-05-2017 00:50
+MAKEFILE_VERSION = v0-4-g9d6446d
+MAKEFILE_DATE = 02-05-2017 00:54
 MAKEFILE_AUTHOR = Alejandro Gallo
 MAKEFILE_URL = https://github.com/alejandrogallo/clang-makefile
 MAKEFILE_LICENSE = GPLv3
@@ -31,7 +31,7 @@ $(wildcard $(DEPFILES)) \
 $(wildcard $(EXECUTABLE)) \
 $(wildcard $(BINDIR)) \
 
-SOURCES = $(CFILES) $(CXXFILES)
+SOURCES ?= $(CFILES) $(CXXFILES) $(FCFILES)
 
 OBJFILES = \
 $(shell echo $(SOURCES) | sed "s/\.\S*/.o/g") \
