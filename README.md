@@ -55,6 +55,9 @@
   * `CXX_EXTENSIONS`(`cpp C cc cxx CC`): 
   * `C_EXTENSIONS`(`c`): 
   * `MAKEFILE_UPDATE_URL`(`https://raw.githubusercontent.com/alejandrogallo/clang-makefile/master/dist/Makefile`): 
+  * `RM_FLAGS`(`-rf`): Remove command flags
+  * `DEFAULT_CLEAN_FILES`(`empty`): Default clean file to be cleaned
+  * `CLEAN_FILES`(`see`): Files to be cleaned
 
 
 
@@ -68,6 +71,15 @@ personal makefile
 
 ```bash 
 make update
+```
+### Main cleaning ###
+
+
+This does a main cleaning of the produced auxiliary files.  Before using it
+check which files are going to be cleaned up.
+
+```bash 
+make clean
 ```
 ### Print a variable used by the Makefile ###
 

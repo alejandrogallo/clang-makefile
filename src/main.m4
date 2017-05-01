@@ -53,6 +53,7 @@ _MAKEFILE_UPDATE_URL,
  https://raw.githubusercontent.com/alejandrogallo/clang-makefile/master/dist/Makefile
 )dnl
 include_once(common-makefile/src/update.m4)
+include_once(common-makefile/src/clean.m4)
 include_once(common-makefile/src/print-variable.m4)
 include_once(common-makefile/src/help.m4)
 include_once(common-makefile/src/help-target.m4)

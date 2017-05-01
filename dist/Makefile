@@ -1,6 +1,6 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 19:01
+MAKEFILE_VERSION = MAKEFILE_DATE = 01-05-2017 19:03
 AUTHOR ?= Alejandro Gallo
 URL ?= https://github.com/alejandrogallo/clang-makefile
 LICENSE ?= GPLv3
@@ -277,6 +277,39 @@ MAKEFILE_UPDATE_URL ?= https://raw.githubusercontent.com/alejandrogallo/clang-ma
 update: ## Update the makefile from the repository
 	$(ARROW) "Getting makefile from $(MAKEFILE_UPDATE_URL)"
 	$(DBG_FLAG)wget $(MAKEFILE_UPDATE_URL) -O Makefile
+
+
+
+
+# File: common-makefile/src/clean.m4
+
+
+# Remove command flags
+RM_FLAGS ?= -rf
+
+# Default clean file to be cleaned
+DEFAULT_CLEAN_FILES ?=
+
+# Files to be cleaned
+CLEAN_FILES ?= $(DEFAULT_CLEAN_FILES)
+
+# =============
+# Main cleaning
+# =============
+#
+# This does a main cleaning of the produced auxiliary files.  Before using it
+# check which files are going to be cleaned up.
+#
+clean: ## Remove build and temporary files
+	$(ARROW) Cleaning up...
+	$(DBG_FLAG) {\
+		for file in $(CLEAN_FILES); do \
+			test -e $$file && { \
+				$(RM) $(RM_FLAGS) $$file &&      \
+				echo $(call print-cmd-name,RM) "$$file";\
+		 } || : ; \
+		done \
+	}
 
 
 
