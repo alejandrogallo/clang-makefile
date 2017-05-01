@@ -55,6 +55,7 @@ include_once(common-makefile/src/log.m4)
 
 include_once(cxx.m4)
 include_once(c.m4)
+include_once(tags.m4)
 
 define(
 _MAKEFILE_UPDATE_URL,

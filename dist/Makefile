@@ -1,7 +1,7 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = v0
-MAKEFILE_DATE = 01-05-2017 19:09
+MAKEFILE_VERSION = v0-1-g78ca95a
+MAKEFILE_DATE = 01-05-2017 19:11
 AUTHOR ?= Alejandro Gallo
 URL ?= https://github.com/alejandrogallo/clang-makefile
 LICENSE ?= GPLv3
@@ -265,6 +265,18 @@ endef
 $(foreach EXT,$(C_EXTENSIONS),$(eval $(call c_dep_compile_rule,$(EXT))))
 $(foreach EXT,$(C_EXTENSIONS),$(eval $(call c_obj_compile_rule,$(EXT))))
 
+
+
+
+# File: tags.m4
+
+
+
+
+tags: $(SOURCES) ## Create tags
+	$(ECHO) $(call print-cmd-name,$(CTAGS)) $(@)
+	$(DBG_FLAG)ctags -R --sort=yes --c++-kinds=+p --fields=+iatS --extra=+q \
+		$(SOURCES) $(subst -I,,$(INCLUDE_FLAGS))
 
 
 
