@@ -12,10 +12,9 @@ $(DIST_MAKEFILE):
 	make -C ../ dist/Makefile
 
 clean:
-	for test in $(TESTS); do\
-		make -C $$(dirname $$test ) clean;\
-		rm $$(dirname $$test)/test.out;\
-	done
+	find */ -name Makefile   | \
+		xargs -n1 dirname     | \
+		xargs -n1 make clean -C
 
 # This is used for printing defined variables from Some other scripts. For
 # instance if you want to know the value of the PDF_VIEWER defined in the
