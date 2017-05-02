@@ -34,7 +34,9 @@ DEPFILES = \
 $(shell echo $(SOURCES) | sed "s/\.\S*/.d/g") \
 
 ifneq ($(MAKECMDGOALS), clean)
+ifneq ($(MAKECMDGOALS), help)
 -include $(DEPFILES)
+endif
 endif
 
 .DEFAULT_GOAL := $(EXECUTABLE)
