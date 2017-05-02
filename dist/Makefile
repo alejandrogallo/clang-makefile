@@ -1,7 +1,7 @@
 
 # File: common-makefile/src/version.m4
-MAKEFILE_VERSION = v0-5-g07d7f44
-MAKEFILE_DATE = 02-05-2017 01:06
+MAKEFILE_VERSION = v0-6-g70ea0d7
+MAKEFILE_DATE = 02-05-2017 12:23
 MAKEFILE_AUTHOR = Alejandro Gallo
 MAKEFILE_URL = https://github.com/alejandrogallo/clang-makefile
 MAKEFILE_LICENSE = GPLv3

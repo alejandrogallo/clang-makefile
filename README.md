@@ -34,8 +34,9 @@
   * `UNIQ`(`uniq`): `uniq` program to use
   * `MAKE`(`see`): `Makefile` binary
   * `RM`(`rm`): `rm` command
-  * `CXX`(`g++`): For creating tags
-  * `CC`(`gcc`): For creating tags
+  * `CXX`(`g++`): C++ compiler
+  * `CC`(`gcc`): C compiler
+  * `FC`(`gfortran`): Fortran compiler
   * `QUIET`(`0`): If secondary programs output is shown
   * `QQUIET`(`empty`): If the log messages should be also muted
   * `DEBUG`(`empty`): If the commands issued should be printed write `DEBUG=1` if you want to see all commands.

@@ -1,0 +1,2 @@
+EXEC_COMPILER = cc
+SOURCES = main.c
